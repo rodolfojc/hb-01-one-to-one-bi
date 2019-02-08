@@ -1,10 +1,12 @@
 package com.hibernate.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //ANNOTATE THE CLASS AS AN ENTITY ABD MAP TO DB TABLE
@@ -31,6 +33,18 @@ public class InstructorDetail {
 	@Column(name="hobby")
 	private String hobby;
 	
+	//ADD NEW FIELD FOR INSTRUCTOR //SETTER ANS GETTERS
+	@OneToOne(mappedBy="instructorDetails", cascade=CascadeType.ALL)
+	private Instructor instructor;
+	
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
+	}
+
 	public InstructorDetail() {
 		
 	}
