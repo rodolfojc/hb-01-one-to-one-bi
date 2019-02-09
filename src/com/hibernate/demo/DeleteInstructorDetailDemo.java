@@ -28,7 +28,7 @@ public class DeleteInstructorDetailDemo {
 			session.beginTransaction();
 			
 			//GET INTRUCTOR DETAIL OBJECT
-			int theId = 2;
+			int theId = 3;
 			InstructorDetail temInstructorDetail = session.get(InstructorDetail.class, theId);			
 			
 			//PRINT THE INSTRUCTOR DETAIL
@@ -37,6 +37,9 @@ public class DeleteInstructorDetailDemo {
 			//PRINT THE ASSOCIATED INSTRUCTOR
 			System.out.println("Associated instructor: "+temInstructorDetail.getInstructor());
 									
+			//REMOVE THE ASSOCIATED OBJECT REFERENCE
+			temInstructorDetail.getInstructor().setInstructorDetail(null);
+			
 			//DELETE INSTRUCTOR - CASCADE
 			System.out.println("Deleting: "+temInstructorDetail);
 			session.delete(temInstructorDetail);
