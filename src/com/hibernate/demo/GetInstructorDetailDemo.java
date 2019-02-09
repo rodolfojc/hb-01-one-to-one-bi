@@ -28,7 +28,7 @@ public class GetInstructorDetailDemo {
 			session.beginTransaction();
 			
 			//GET INTRUCTOR DETAIL OBJECT
-			int theId = 2;
+			int theId = 999;
 			InstructorDetail temInstructorDetail = session.get(InstructorDetail.class, theId);			
 			
 			//PRINT THE INSTRUCTOR DETAIL
@@ -43,7 +43,13 @@ public class GetInstructorDetailDemo {
 			System.out.println("Done!");
 			
 		}
+		catch (Exception exc) {
+			exc.printStackTrace();
+		}
 		finally {
+			//HADDLE CONNECTION LEAK ISSUE
+			session.close();
+			
 			factory.close();
 		}
 		
